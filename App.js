@@ -7,16 +7,19 @@ import 'react-native-gesture-handler';
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer,DefaultTheme  } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-//Screens
 
+//Screens
 import HomeScreen from './screeens/Home';
-import Details from './screeens/Details';
+import Help_Others from './screeens/Help_Others';
+import Camerax from './screeens/camera';
+import Botx from './screeens/bot';
+import LSX from './screeens/locationScreen';
+
 
 //Code
-
 const Stack = createStackNavigator();
 
 export default function App({navigation}) {
@@ -24,7 +27,22 @@ export default function App({navigation}) {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen name="Help Others" component={Help_Others} />
+        <Stack.Screen
+          name="Camera"
+          component={Camerax}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Bot"
+          component={Botx}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Loc"
+          component={LSX}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
