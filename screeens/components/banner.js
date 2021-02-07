@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Image } from 'react-native';
 import { Banner } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 const MyComponent = () => {
   const [visible, setVisible] = React.useState(true);
-
+  const navigation = useNavigation();
   return (
     <Banner
     style={{margin:13,borderRadius:13}}
@@ -12,7 +13,7 @@ const MyComponent = () => {
       actions={[
         {
           label: 'START',
-          onPress: () => setVisible(false),
+          onPress: () => navigation.navigate('Bot'),
         },
       ]}
       icon={({size}) => (
@@ -24,6 +25,7 @@ const MyComponent = () => {
           }}
         />
       )}>
+      
       Use our realtime chatbot when you are lost or in danger!
     </Banner>
   );

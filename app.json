@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "lifesaver_v2",
-    "slug": "lifesaver_v2",
-    "version": "1.0.0",
+    "name": "LIFESAVER",
+    "slug": "LIFESAVER",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "io.expo.lifesaver"
     },
     "web": {
       "favicon": "./assets/favicon.png"

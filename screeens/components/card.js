@@ -11,7 +11,7 @@ export default function MyComponent (){
       </Card.Content>
       <Card.Cover source={ require('../images/warren-wong-fNUNt9w3m-Q-unsplash.jpg')}/>
       <Card.Actions>
-        <Button onPress={()=>{navigation.navigate('Help Others')}}>SAVE ME!</Button>
+        <Button onPress={()=>{navigation.navigate('Loc')}}>SAVE ME!</Button>
       </Card.Actions>
     </Card>)
 };

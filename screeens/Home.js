@@ -3,6 +3,7 @@ import {View,Dimensions,ScrollView,Linking} from 'react-native';
 import { Tile,PricingCard,SocialIcon  } from 'react-native-elements';
 import Cardx from './components/card';
 import Bannerx from './components/banner'
+import { Text,StyleSheet } from 'react-native';
 
 export default function HomeScreen({navigation}) {
     const windowWidth = Dimensions.get('window').width;
@@ -21,8 +22,10 @@ export default function HomeScreen({navigation}) {
          <Cardx />
         </View>
 
+        <Bannerx />
 
         <PricingCard
+        onButtonPress={()=>{navigation.navigate('Camera')}}
         containerStyle={{borderRadius:13}}
             color='#6200EE'
             title='Protect the environment!'
@@ -33,7 +36,6 @@ export default function HomeScreen({navigation}) {
             button={{ title: 'GET STARTED'}}
         />
 
-        <Bannerx />
 
         <SocialIcon
         title='APP DOCS AND SUPPORT'
@@ -43,7 +45,15 @@ export default function HomeScreen({navigation}) {
         style={{margin:13}}
         />
 
-
+        <View style={Style.container}>
+            <Text style={Style.textx}>Take care and have a good time hiking!</Text>
+        </View>
         </ScrollView>
+
     );
 }
+
+const Style = StyleSheet.create({
+    container:{backgroundColor:'black',height:75,flex: 1,justifyContent: 'center',alignItems: 'center'},
+    textx:style={color:'#6200EE'}
+})
