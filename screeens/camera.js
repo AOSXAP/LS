@@ -2,29 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity,Button,Image,ImageBackgound } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as firebase from "firebase";
+import 'firebase/database';
 import * as MediaLibrary from 'expo-media-library';
 import * as Permissions from 'expo-permissions'
 import "react-native-gesture-handler";
 
 
-  var firebaseConfig = {
-    apiKey: "AIzaSyAcnjtDLee5E2kTULRDWI1bHzjXOhre9jE",
+   var firebaseConfig = {
+    apiKey: "AIzaSyBRT55m8nz_sWQFNVk3KjsGrVzuFLcAP3E",
     authDomain: "rnaosx.firebaseapp.com",
     databaseURL: "https://rnaosx.firebaseio.com",
     projectId: "rnaosx",
     storageBucket: "rnaosx.appspot.com",
     messagingSenderId: "430779929325",
-    appId: "1:430779929325:web:b2a1506db556a9e33df2e4"
+    appId: "1:430779929325:web:ff55021b129dc8c23df2e4"
   };
   
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   
   }
-
-var storage = firebase.storage();
-var storageRef = firebase.storage().ref();
-
 
 //functii
 

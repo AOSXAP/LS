@@ -13,7 +13,7 @@ const MyComponent = () => {
       actions={[
         {
           label: 'START',
-          onPress: () => navigation.navigate('Bot'),
+          onPress: () => navigation.navigate('Chatbot'),
         },
       ]}
       icon={({size}) => (

@@ -27,21 +27,18 @@ export default function App({navigation}) {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Help Others" component={Help_Others} />
+        <Stack.Screen  name="HelpOthers" component={Help_Others} />
         <Stack.Screen
           name="Camera"
           component={Camerax}
-          options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Bot"
+          name="Chatbot"
           component={Botx}
-          options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Loc"
+          name="Location"
           component={LSX}
-          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

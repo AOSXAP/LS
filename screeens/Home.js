@@ -16,7 +16,7 @@ export default function HomeScreen({navigation}) {
             featured
             caption="Help others!"
             style={{alignSelf:"stretch"}}
-            onPress={()=>{navigation.navigate('Help Others')}}
+            onPress={()=>{navigation.navigate('HelpOthers')}}
         />
         <View style={{margin:15}}>
          <Cardx />
@@ -55,5 +55,5 @@ export default function HomeScreen({navigation}) {
 
 const Style = StyleSheet.create({
     container:{backgroundColor:'black',height:75,flex: 1,justifyContent: 'center',alignItems: 'center'},
-    textx:style={color:'#6200EE'}
+    textx:{color:'#6200EE'}
 })

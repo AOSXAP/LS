@@ -16,14 +16,14 @@ import {
 } from "react-native";
 import * as Location from "expo-location";
 
-  var firebaseConfig = {
-    apiKey: "AIzaSyAcnjtDLee5E2kTULRDWI1bHzjXOhre9jE",
+   var firebaseConfig = {
+    apiKey: "AIzaSyBRT55m8nz_sWQFNVk3KjsGrVzuFLcAP3E",
     authDomain: "rnaosx.firebaseapp.com",
     databaseURL: "https://rnaosx.firebaseio.com",
     projectId: "rnaosx",
     storageBucket: "rnaosx.appspot.com",
     messagingSenderId: "430779929325",
-    appId: "1:430779929325:web:b2a1506db556a9e33df2e4",
+    appId: "1:430779929325:web:ff55021b129dc8c23df2e4"
   };
 
   if (!firebase.apps.length) {
