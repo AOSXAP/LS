@@ -1,14 +1,16 @@
 import React from 'react';
-import {View,Dimensions,ScrollView,Linking} from 'react-native';
+import {View,ScrollView,Linking} from 'react-native';
 import { Tile,PricingCard,SocialIcon  } from 'react-native-elements';
 import Cardx from './components/card';
 import Bannerx from './components/banner'
 import { Text,StyleSheet } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Meteox from './components/cardx';
+import MapCard from './MapCrd';
 
 export default function HomeScreen({navigation}) {
-    const windowWidth = Dimensions.get('window').width;
     return (
-        <ScrollView>
+        <ScrollView style={{flex:1}}>
         <Tile
             height={250}
             imageSrc={require('./images/nasa-Q1p7bh3SHj8-unsplash.jpg')}
@@ -24,6 +26,10 @@ export default function HomeScreen({navigation}) {
 
         <Bannerx />
 
+        <View style={{margin:15}}>
+            <MapCard />
+        </View>
+
         <PricingCard
         onButtonPress={()=>{navigation.navigate('Camera')}}
         containerStyle={{borderRadius:13}}
@@ -36,6 +42,11 @@ export default function HomeScreen({navigation}) {
             button={{ title: 'GET STARTED'}}
         />
 
+        
+        <View style={{margin:15}}>
+         <Meteox />
+        </View>
+        
 
         <SocialIcon
         title='APP DOCS AND SUPPORT'
@@ -48,8 +59,9 @@ export default function HomeScreen({navigation}) {
         <View style={Style.container}>
             <Text style={Style.textx}>Take care and have a good time hiking!</Text>
         </View>
-        </ScrollView>
 
+
+        </ScrollView>
     );
 }
 

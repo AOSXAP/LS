@@ -1,50 +1,33 @@
 import React,{useState,useEffect} from 'react';
-import {View, Dimensions } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as firebase from 'firebase';
 import 'firebase/database';
+import initFirebase from './components/initFirebase';
+initFirebase();
 
-
-   var firebaseConfig = {
-    apiKey: "AIzaSyBRT55m8nz_sWQFNVk3KjsGrVzuFLcAP3E",
-    authDomain: "rnaosx.firebaseapp.com",
-    databaseURL: "https://rnaosx.firebaseio.com",
-    projectId: "rnaosx",
-    storageBucket: "rnaosx.appspot.com",
-    messagingSenderId: "430779929325",
-    appId: "1:430779929325:web:ff55021b129dc8c23df2e4"
-  };
-
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
-
-function All(){
+export default function All(){
   const [datay,setDatay] =useState([]);
       
   useEffect(()=>{
       var data = firebase.database().ref('locations/');
       data.once('value', (snapshot) => {
-        setDatay(Object.values(snapshot.val()));
+        let newdata = Object.values(snapshot.val());
+        newdata.forEach(ob => {
+          ob.longitude = parseFloat(ob.longitude);
+          ob.latitude = parseFloat(ob.latitude);
+        });
+        setDatay(Object.values(newdata));
       });
   },[])
 
   return(
-    <MapView
-        style={{ flex: 1,minHeight:950}}
-    >
-    
-    {datay.map((i,index) => <Marker key={index} title={'Signal sent from'} description={`Latitude : ${i.latitude} , longitude: ${i.longitude}`} coordinate={{ latitude: parseFloat(i.latitude), longitude: parseFloat(i.longitude)}}/>)}
-      
+    <MapView style={{ flex: 1,minHeight:950}} >
+
+        {datay.map((i,index) => <Marker key={index} title={'Signal sent from'} description={`Latitude : ${i.latitude} , longitude: ${i.longitude}`} 
+        coordinate={{ latitude: (i.latitude), longitude: (i.longitude)}}/>)}
+        
     </MapView>
   )
   }
 
-export default function App() {
-  return (
-    <View>
-      <All />
-    </View>
-  );
-}
 

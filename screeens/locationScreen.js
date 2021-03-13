@@ -1,34 +1,21 @@
 import * as firebase from "firebase";
 import "firebase/database";
 import React, { useState } from "react";
-import { Appbar } from "react-native-paper";
-
+import getOneTimeLocation from './components/getLocation';
 import {
   SafeAreaView,
   View,
   Text,
   StyleSheet,
   Image,
-  PermissionsAndroid,
-  Platform,
-  Button,
+  ScrollView,
   TouchableOpacity,
 } from "react-native";
 import * as Location from "expo-location";
+import * as SMS from 'expo-sms';
+import initFirebase from './components/initFirebase';
+initFirebase();
 
-   var firebaseConfig = {
-    apiKey: "AIzaSyBRT55m8nz_sWQFNVk3KjsGrVzuFLcAP3E",
-    authDomain: "rnaosx.firebaseapp.com",
-    databaseURL: "https://rnaosx.firebaseio.com",
-    projectId: "rnaosx",
-    storageBucket: "rnaosx.appspot.com",
-    messagingSenderId: "430779929325",
-    appId: "1:430779929325:web:ff55021b129dc8c23df2e4"
-  };
-
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
 
 const locationScreen = ({ navigation }) => {
   var [latitude, setLatitude] = useState("unknown");
@@ -58,27 +45,6 @@ const locationScreen = ({ navigation }) => {
       });
   };
 
-  const getOneTimeLocation = async (uud) => {
-    let { status } = await Location.requestPermissionsAsync();
-    if (status !== "granted") {
-      setLocationStatus("Permission to access location was denied");
-    }
-    //time
-    var today = new Date();
-    data =today.getFullYear() + "-" +(today.getMonth() + 1) + "-" + today.getDate();
-    time =today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-
-    let location = await Location.getCurrentPositionAsync({});
-    const latitude = JSON.stringify(location.coords.latitude);
-    const longitude = JSON.stringify(location.coords.longitude);
-    return{
-      latitude,
-      longitude,
-      time,
-      data
-    }
-  };
-
   const doubleF = async() => {
     setLocationStatus("Please Wait...");
   let datax = await getOneTimeLocation();
@@ -88,8 +54,25 @@ const locationScreen = ({ navigation }) => {
   setLocationStatus("Location sent");
   };
 
+    const sendSMS = async() => {
+    setLocationStatus("Please Wait...");
+    let datax = await getOneTimeLocation();
+    let m = datax;
+      const isAvailable = await SMS.isAvailableAsync();
+      if (isAvailable) {
+        setLatitude(m.latitude);setLongitude(m.longitude);
+        const string = `My latitude is : ${m.latitude} and longitude :${m.longitude}, I need help!`
+          await SMS.sendSMSAsync(
+              ['0772248796'],string
+            );
+            setLocationStatus("Message ready to send");
+      } else {
+        console.log('error');
+      }
+    }
+
   return (
-    <SafeAreaView style={{ flex: 1,backgroundColor:'white'}}>
+    <ScrollView style={{ flex: 1,backgroundColor:'white'}}>
       <View
         style={{
           width: "100%",
@@ -107,6 +90,7 @@ const locationScreen = ({ navigation }) => {
             alignSelf:'center',
             marginTop: 45,
             flex: 0.6,
+            height:300
           }}
           source={require("./assets/undraw_Navigation_re_wxx4.png")}
         />
@@ -140,8 +124,24 @@ const locationScreen = ({ navigation }) => {
                 Send my location
               </Text>
           </TouchableOpacity>
+          
+          <TouchableOpacity
+              style={{
+                position: "relative",
+                backgroundColor: "#6200EE",
+                paddingVertical: 10,
+                width: 160,
+                borderRadius: 100,
+                marginTop: 30,
+              }}
+              onPress={sendSMS}
+            > 
+              <Text style={{ color: "white", textAlign: "center" }}>
+              Send location(SMS)
+              </Text>
+          </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 

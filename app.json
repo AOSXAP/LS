@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "LIFESAVER",
+    "description":"A simple , yet engaging , app made to save tourists lost in the mountains and to protect the enviorment!",
     "slug": "LIFESAVER",
     "version": "1.0.1",
     "orientation": "portrait",
@@ -24,7 +25,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "io.expo.lifesaver"
+      "package": "io.expo.lifesaver",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyC7qisiF0F094DajZb6N4RljcwtlJa_qOQ"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

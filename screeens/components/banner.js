@@ -12,9 +12,12 @@ const MyComponent = () => {
       visible={visible}
       actions={[
         {
-          label: 'START',
+          label: 'chatbot',
           onPress: () => navigation.navigate('Chatbot'),
-        },
+        },        {
+          label: 'chat',
+          onPress: () => navigation.navigate('Chat'),
+        }
       ]}
       icon={({size}) => (
         <Image
@@ -26,7 +29,7 @@ const MyComponent = () => {
         />
       )}>
       
-      Use our realtime chatbot when you are lost or in danger!
+      Use our chatbot in dangerous situations, or talk with others using our chat service.
     </Banner>
   );
 };
